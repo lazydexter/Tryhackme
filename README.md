@@ -79,5 +79,15 @@ Ok we found a bunch of .pdf files and a ‘notes’ directory. Inside there is a
 
 ![image](https://user-images.githubusercontent.com/71508714/169669395-65eabb52-d0e7-4ad7-b815-be2aa1a2c601.png)
 
+Interesting! We have some sort of directory in the file. Let’s try to access that on the main web page:
+
+![image](https://user-images.githubusercontent.com/71508714/169669417-d814f201-f368-44e8-9c0e-bb94d6341c81.png)
+
+Ok, we can now answer the question “What is the hidden directory?” with the value of the new found directory.
+
+Let’s to do another Gobuster search in the new found webpage, to see if we get some new results:
+
+![image](https://user-images.githubusercontent.com/71508714/169669444-48cee6e7-7141-4c91-8694-56cbc483012d.png)
+
 
 
