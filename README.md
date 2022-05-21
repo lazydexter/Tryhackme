@@ -67,5 +67,17 @@ By checking the emails, we found an email regarding a reset password (remember t
 
 ![image](https://user-images.githubusercontent.com/71508714/169669261-e3b2c913-9ed5-4a27-9d81-e37b4e16f289.png)
 
+Ok, heading back to the smb shares, we can now try to access the milesdyson share using the username milesdyson and the new password:
+
+![image](https://user-images.githubusercontent.com/71508714/169669298-882b6dd1-1446-4b33-87ec-dd05fd376662.png)
+
+![image](https://user-images.githubusercontent.com/71508714/169669334-e95091dd-7d6f-46aa-a4a1-e667e6ac1671.png)
+
+![image](https://user-images.githubusercontent.com/71508714/169669363-eef16619-a937-4a7e-8ce9-41a0133fe09e.png)
+
+Ok we found a bunch of .pdf files and a ‘notes’ directory. Inside there is a bunch of .md files and a text file called ‘important.txt’. Let’s check that file:
+
+![image](https://user-images.githubusercontent.com/71508714/169669395-65eabb52-d0e7-4ad7-b815-be2aa1a2c601.png)
+
 
 
