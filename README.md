@@ -32,6 +32,16 @@ SMB eumeration can be done by nmap scripts also.
 ![image](https://user-images.githubusercontent.com/71508714/169668548-7e0527ee-b3ab-4c22-be7d-b66797b8762d.png)
 ![image](https://user-images.githubusercontent.com/71508714/169668583-2bbdc350-322c-4c55-b45e-686c8f278f21.png)
 
+Using the SMBClient tool to list the open shares on the host:
+
+![image](https://user-images.githubusercontent.com/71508714/169668655-ef9020a5-b3be-4e4a-bfe3-b5f929217871.png)
+Connecting to the “anonymous” share, this contains a text file and a “logs” folder, containing three log files. Downloading all of the files locally to furhter examine them:
+
+![image](https://user-images.githubusercontent.com/71508714/169668686-0af707e1-bb8b-4f09-a1cc-2ee066fb2a14.png)
+
+The “attention.txt” file contains a note that mentions a password change in the organization, whereas the logs contain what looks like a word list of some sort, potentially from an authentication log:
+
+![image](https://user-images.githubusercontent.com/71508714/169668742-3ff023a7-eddf-4850-a3bb-f4be6018b9c3.png)
 
 
 
