@@ -94,3 +94,10 @@ Checking the new directory, we are presented with a login page for a Cuppa CMS p
 
 ![image](https://user-images.githubusercontent.com/71508714/169669489-7009e72f-4ac7-4445-b5e7-e721be811134.png)
 
+Not having a clear attack vector for now, the best choice is to try to check if the said version of the CMS has some known vulnerabilities that we can take advantage of.
+
+While searching, we manage to find the oficial documentation of the CMS here, which mentions that the default credentials are ‘admin’:’admin’, but those do not work.
+
+Find this vulnerablity in expolitdb:
+
+![image](https://user-images.githubusercontent.com/71508714/169669532-b8d86694-812c-4ce5-beb4-0b1c30fab592.png)
