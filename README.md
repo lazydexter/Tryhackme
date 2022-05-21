@@ -49,5 +49,23 @@ We can use something like Hydra to try to brute force it or burp intruder. First
 
 ![image](https://user-images.githubusercontent.com/71508714/169669138-f9b35b7d-be53-49ef-8714-23a72e0de60f.png)
 
+After a couple of tries, we finally get a working command. Now let’s try to use Hydra to brute force it using the provided list:
+
+hydra -l milesdyson -P log1.txt 10.10.174.36 -V http-form-post ‘/squirrelmail/src/redirect.php:login_username=milesdyson&secretkey=^PASS^&js_autodetect_results=1&just_logged_in=1:F=Unknown User or password incorrect.’
+
+And after running, we get a hit:
+
+![image](https://user-images.githubusercontent.com/71508714/169669191-9e6a5984-9d6a-41b6-a440-764b05724701.png)
+
+So let’s try to login with the newly found credentials:
+
+![image](https://user-images.githubusercontent.com/71508714/169669217-95957a31-0a3a-403e-92f8-f2b59655215f.png)
+
+Now we can answer the first question in the task “What is Miles password for his emails?” with the password found in ‘log1.txt’.
+
+By checking the emails, we found an email regarding a reset password (remember the previous attention.txt file?):
+
+![image](https://user-images.githubusercontent.com/71508714/169669261-e3b2c913-9ed5-4a27-9d81-e37b4e16f289.png)
+
 
 
