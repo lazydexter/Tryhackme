@@ -90,4 +90,7 @@ Let’s to do another Gobuster search in the new found webpage, to see if we get
 ![image](https://user-images.githubusercontent.com/71508714/169669444-48cee6e7-7141-4c91-8694-56cbc483012d.png)
 
 
+Checking the new directory, we are presented with a login page for a Cuppa CMS platform:
+
+![image](https://user-images.githubusercontent.com/71508714/169669489-7009e72f-4ac7-4445-b5e7-e721be811134.png)
 
