@@ -43,5 +43,11 @@ The “attention.txt” file contains a note that mentions a password change in 
 
 ![image](https://user-images.githubusercontent.com/71508714/169668742-3ff023a7-eddf-4850-a3bb-f4be6018b9c3.png)
 
+While ‘log2.txt’ and ‘log3.txt’ are empty, ‘log1.txt’ appears to have some kind of list of usernames or passwords. Also the milesdyson share is not accessible, but we can try to use the name on the mail server and the list as a password list.
+
+We can use something like Hydra to try to brute force it or burp intruder. First, let’s save the list in a file that we can use. Second we need to make an attempt to login and get the POST url:
+
+![image](https://user-images.githubusercontent.com/71508714/169669138-f9b35b7d-be53-49ef-8714-23a72e0de60f.png)
+
 
 
