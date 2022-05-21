@@ -179,9 +179,9 @@ Now, after a minute, the cronjob should have been executed, and we can get our r
 ![image](https://user-images.githubusercontent.com/71508714/169669920-d3b2cac6-4f12-492c-a943-0bf64c12cf4a.png)
 
 
+Overall, this machine was super fun, with a really cool enumeration phase. Probably there is another way of escalating our privileges, but this seemed an easy way of doing it.
 
-
-
+I hope you enjoyed reading this post as much as I enjoyed writing it. Let me know in the comments if something is wrong or missing, as I am still learning myself and feedback is always welcomed :)
 
 
 
