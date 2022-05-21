@@ -98,6 +98,37 @@ Not having a clear attack vector for now, the best choice is to try to check if 
 
 While searching, we manage to find the oficial documentation of the CMS here, which mentions that the default credentials are ‘admin’:’admin’, but those do not work.
 
-Find this vulnerablity in expolitdb:
+Searching for RFI vulnerabilities affecting Cuppa CMS leads to https://www.exploit-db.com/exploits/25971.:
 
 ![image](https://user-images.githubusercontent.com/71508714/169669532-b8d86694-812c-4ce5-beb4-0b1c30fab592.png)
+
+After reading the exploit and tweaking a little bit of the url, we call the following URL:
+
+http://skynet/45kra24zxs28v3yd/administrator/alerts/alertConfigField.php?urlConfig=../../../../../../../../../etc/passwd
+And list the /etc/passwd file, so the exploit is working:
+
+![image](https://user-images.githubusercontent.com/71508714/169669563-b7b11be9-fe4d-4e51-8769-9d79b73090fe.png)
+
+
+So Local File Inclusion is possible, but in order to get a foothold on the server, we need to use a Remote File Inclusion attack. The main difference is that in the Local File Inclusion, local files are used while in the Remote File Inclusion, as the name implies, remote files are used instead, allowing us to pass an url with a script to be executed.
+
+Let’s first create a small one line reverse shell file, using the following code, replacing IP and Port with your IP address and a Port to be used in our reverse shell listener:
+
+Copying the php reverseshell from https://pentestmonkey.net/
+
+![image](https://user-images.githubusercontent.com/71508714/169669716-e3da5738-8220-40a6-a7cc-74cf5a0011a3.png)
+
+After this, let’s set up a netcat listener on the Port defined .
+
+![image](https://user-images.githubusercontent.com/71508714/169669756-fdc4d956-fb31-4d33-8602-505759f6629e.png)
+
+
+Now we need to put an http server up in the air, on the directory where we have the reverse shell code, using Python:
+
+sudo Python3 -m http.server 80
+
+![image](https://user-images.githubusercontent.com/71508714/169669752-3e654633-293f-4f24-a8d7-8c6637332649.png)
+
+
+
+
