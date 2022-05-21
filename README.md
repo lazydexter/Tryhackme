@@ -21,3 +21,17 @@ Port 143 — IMAP, prolly also part of the mail server
 Port 139/445 — SMB ports, this is a good starting point
 ![image](https://user-images.githubusercontent.com/71508714/169668382-80739b1e-7dba-48a7-a0e0-b8f03a9ca885.png)
 
+By checking the directories, we found the login page of the mail server:
+![image](https://user-images.githubusercontent.com/71508714/169668447-26c8ef56-04b8-42e5-9d00-78b46641cb70.png)
+
+Tried hydra & sqlinject but nothing have happen.
+
+Enumerating SMB:
+
+SMB eumeration can be done by nmap scripts also.
+![image](https://user-images.githubusercontent.com/71508714/169668548-7e0527ee-b3ab-4c22-be7d-b66797b8762d.png)
+![image](https://user-images.githubusercontent.com/71508714/169668583-2bbdc350-322c-4c55-b45e-686c8f278f21.png)
+
+
+
+
